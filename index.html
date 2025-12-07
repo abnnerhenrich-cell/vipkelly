@@ -4,12 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Área VIP</title>
+
   <style>
     :root{
       --roxo:#7b2cff;
-      --roxo-fraco:#a970ff;
       --amarelo:#ffcc33;
-      --bg:#07060a;
     }
 
     *{
@@ -21,6 +20,7 @@
       margin:0;
       padding:0;
       min-height:100%;
+      overflow-y:auto;
     }
 
     body{
@@ -28,15 +28,13 @@
         linear-gradient(180deg, rgba(5,3,10,0.85), rgba(5,3,10,0.95)),
         url('https://i.imgur.com/YbSESek.png') center/cover no-repeat fixed;
       color:#fff;
-      display:flex;
-      align-items:center;
-      justify-content:center;
       padding:20px;
     }
 
     .painel{
       width:100%;
       max-width:1100px;
+      margin:0 auto;
       padding:20px;
       text-align:center;
     }
@@ -44,14 +42,11 @@
     .logo{
       font-size:42px;
       font-weight:900;
-      letter-spacing:2px;
       color:#b177ff;
-      text-shadow:0 0 20px rgba(123,44,255,.8);
-      word-break:break-word;
+      text-shadow:0 0 25px rgba(123,44,255,.9);
     }
 
     .sub{
-      margin-top:6px;
       font-size:14px;
       color:#ffcc33;
       letter-spacing:2px;
@@ -59,7 +54,6 @@
 
     .vip{
       margin-bottom:30px;
-      color:#fff;
       font-size:13px;
       opacity:.9;
     }
@@ -67,31 +61,60 @@
     .grid{
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-      gap:14px;
+      gap:16px;
       margin-top:20px;
     }
 
+    /* ======= CARD SUPER BRILHOSO ======= */
     .card{
+      position:relative;
+      overflow:hidden;
       background:linear-gradient(160deg,rgba(123,44,255,.35),rgba(50,10,80,.35));
-      border:1px solid rgba(170,120,255,.4);
-      border-radius:16px;
-      padding:20px 16px;
+      border:1px solid rgba(170,120,255,.5);
+      border-radius:18px;
+      padding:22px 16px;
       text-align:center;
-      box-shadow:0 0 25px rgba(123,44,255,.25);
-      transition:.2s ease;
-      cursor:pointer;
       text-decoration:none;
       color:white;
-      display:block;
+      cursor:pointer;
+
+      backdrop-filter:blur(6px);
+      box-shadow:0 0 25px rgba(123,44,255,.25);
+      transition:.2s ease;
+      animation: brilhoBase 3s infinite alternate;
+    }
+
+    /* brilho animado passando */
+    .card::before{
+      content:"";
+      position:absolute;
+      top:-100%;
+      left:-100%;
+      width:200%;
+      height:200%;
+      background:linear-gradient(120deg,transparent,rgba(255,255,255,.35),transparent);
+      transform:rotate(25deg);
+      animation: brilhoMove 5s infinite;
+    }
+
+    @keyframes brilhoMove{
+      0%{transform:translateX(-100%) rotate(25deg)}
+      100%{transform:translateX(100%) rotate(25deg)}
+    }
+
+    @keyframes brilhoBase{
+      from{box-shadow:0 0 20px rgba(123,44,255,.3)}
+      to{box-shadow:0 0 40px rgba(200,120,255,.7)}
+    }
+
+    /* ======= HOVER QUE SALTA ======= */
+    .card:hover{
+      transform:translateY(-10px) scale(1.04);
+      box-shadow:0 0 60px rgba(200,120,255,.9);
     }
 
     .card:active{
-      transform:scale(0.97);
-    }
-
-    .card:hover{
-      transform:scale(1.04);
-      box-shadow:0 0 40px rgba(180,120,255,.6);
+      transform:scale(.96);
     }
 
     .tag{
@@ -100,9 +123,9 @@
       color:#000;
       font-size:11px;
       font-weight:700;
-      padding:2px 8px;
+      padding:3px 8px;
       border-radius:20px;
-      margin-bottom:6px;
+      margin-bottom:8px;
     }
 
     .titulo{
@@ -113,54 +136,26 @@
 
     .desc{
       font-size:12px;
-      opacity:.85;
+      opacity:.9;
       margin-top:6px;
     }
 
     .desativado{
-      opacity:.35;
+      opacity:.3;
       filter:grayscale(1);
       pointer-events:none;
     }
 
-    /* ===== AJUSTES EXCLUSIVOS PARA CELULAR ===== */
+    /* ===== MOBILE ===== */
     @media (max-width:600px){
+      body{background-attachment:scroll;}
 
-      body{
-        background-attachment:scroll;
-      }
-
-      .logo{
-        font-size:30px;
-      }
-
-      .sub{
-        font-size:12px;
-      }
-
-      .vip{
-        font-size:12px;
-      }
-
-      .grid{
-        grid-template-columns:1fr;
-      }
-
-      .card{
-        padding:18px 14px;
-      }
-
-      .titulo{
-        font-size:16px;
-      }
-
-      .desc{
-        font-size:12px;
-      }
+      .logo{font-size:30px;}
+      .grid{grid-template-columns:1fr;}
     }
-
   </style>
 </head>
+
 <body>
 
   <div class="painel">
@@ -176,12 +171,12 @@
         <div class="desc">Maior cotação do Brasil</div>
       </a>
 
-      <a href="COLE_AQUI" target="_blank" class="card">
+      <a href="COLE_AQUI" class="card">
         <div class="titulo">SUPORTE OFICIAL DA BANCA</div>
         <div class="desc">Para todos os clientes</div>
       </a>
 
-      <a href="COLE_AQUI" target="_blank" class="card">
+      <a href="COLE_AQUI" class="card">
         <div class="titulo">TUTORIAIS</div>
         <div class="desc">Assista quando precisar</div>
       </a>
@@ -191,13 +186,13 @@
         <div class="titulo">CANAL KELLY MENEZES</div>
         <div class="desc">Veja agora</div>
       </a>
-      
+
       <a href="https://palpite-seven.vercel.app/" class="card">
         <div class="titulo">PALPITES</div>
         <div class="desc">Palpites para você apostar</div>
       </a>
 
-      <a href="COLE_AQUI" target="_blank" class="card">
+      <a href="COLE_AQUI" class="card">
         <div class="titulo">CRUZ DO DIA</div>
         <div class="desc">Proteção e sorte</div>
       </a>
