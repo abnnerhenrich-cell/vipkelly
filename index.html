@@ -11,10 +11,7 @@
       --amarelo:#ffcc33;
     }
 
-    *{
-      box-sizing:border-box;
-      font-family:Arial,Helvetica,sans-serif;
-    }
+    *{box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
 
     html,body{
       margin:0;
@@ -46,17 +43,8 @@
       text-shadow:0 0 25px rgba(123,44,255,.9);
     }
 
-    .sub{
-      font-size:14px;
-      color:#ffcc33;
-      letter-spacing:2px;
-    }
-
-    .vip{
-      margin-bottom:30px;
-      font-size:13px;
-      opacity:.9;
-    }
+    .sub{font-size:14px;color:#ffcc33;letter-spacing:2px}
+    .vip{margin-bottom:30px;font-size:13px;opacity:.9}
 
     .grid{
       display:grid;
@@ -65,7 +53,6 @@
       margin-top:20px;
     }
 
-    /* ======= CARD SUPER BRILHOSO ======= */
     .card{
       position:relative;
       overflow:hidden;
@@ -77,29 +64,29 @@
       text-decoration:none;
       color:white;
       cursor:pointer;
-
       backdrop-filter:blur(6px);
       box-shadow:0 0 25px rgba(123,44,255,.25);
       transition:.2s ease;
       animation: brilhoBase 3s infinite alternate;
     }
 
-    /* brilho animado passando */
-    .card::before{
-      content:"";
-      position:absolute;
-      top:-100%;
-      left:-100%;
-      width:200%;
-      height:200%;
-      background:linear-gradient(120deg,transparent,rgba(255,255,255,.35),transparent);
-      transform:rotate(25deg);
-      animation: brilhoMove 5s infinite;
+    .card:hover{
+      transform:translateY(-10px) scale(1.04);
+      box-shadow:0 0 60px rgba(200,120,255,.9);
     }
 
-    @keyframes brilhoMove{
-      0%{transform:translateX(-100%) rotate(25deg)}
-      100%{transform:translateX(100%) rotate(25deg)}
+    .card:active{transform:scale(.96)}
+
+    .emoji{
+      font-size:32px;
+      display:block;
+      margin-bottom:6px;
+      animation:pulo 1.6s infinite;
+    }
+
+    @keyframes pulo{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-8px)}
     }
 
     @keyframes brilhoBase{
@@ -107,49 +94,14 @@
       to{box-shadow:0 0 40px rgba(200,120,255,.7)}
     }
 
-    /* ======= HOVER QUE SALTA ======= */
-    .card:hover{
-      transform:translateY(-10px) scale(1.04);
-      box-shadow:0 0 60px rgba(200,120,255,.9);
-    }
+    .titulo{font-size:17px;font-weight:700;margin-top:4px}
 
-    .card:active{
-      transform:scale(.96);
-    }
+    .desc{font-size:12px;opacity:.9;margin-top:6px}
 
-    .tag{
-      display:inline-block;
-      background:#ffcc33;
-      color:#000;
-      font-size:11px;
-      font-weight:700;
-      padding:3px 8px;
-      border-radius:20px;
-      margin-bottom:8px;
-    }
+    .desativado{opacity:.3;filter:grayscale(1);pointer-events:none}
 
-    .titulo{
-      font-size:17px;
-      font-weight:700;
-      margin-top:8px;
-    }
-
-    .desc{
-      font-size:12px;
-      opacity:.9;
-      margin-top:6px;
-    }
-
-    .desativado{
-      opacity:.3;
-      filter:grayscale(1);
-      pointer-events:none;
-    }
-
-    /* ===== MOBILE ===== */
     @media (max-width:600px){
       body{background-attachment:scroll;}
-
       .logo{font-size:30px;}
       .grid{grid-template-columns:1fr;}
     }
@@ -158,62 +110,63 @@
 
 <body>
 
-  <div class="painel">
-    <div class="logo">KELLY MENEZES</div>
-    <div class="sub">ÁREA EXCLUSIVA</div>
-    <div class="vip">👑 KELLY MENEZES - VIP ★</div>
+<div class="painel">
+  <div class="logo">KELLY MENEZES</div>
+  <div class="sub">ÁREA EXCLUSIVA</div>
+  <div class="vip">👑 KELLY MENEZES - VIP ★</div>
 
-    <div class="grid">
+  <div class="grid">
 
-      <a href="https://kellymenezes.app/" target="_blank" class="card">
-        <span class="tag">TOP #1</span>
-        <div class="titulo">JOGAR AGORA 9.000</div>
-        <div class="desc">Maior cotação do Brasil</div>
-      </a>
+    <a href="https://kellymenezes.app/" class="card">
+      <span class="emoji">🎰</span>
+      <div class="titulo">JOGAR AGORA 9.000</div>
+      <div class="desc">Maior cotação do Brasil</div>
+    </a>
 
-      <a href="COLE_AQUI" class="card">
-        <div class="titulo">SUPORTE OFICIAL DA BANCA</div>
-        <div class="desc">Para todos os clientes</div>
-      </a>
+    <a href="COLE_AQUI" class="card">
+      <span class="emoji">🛠️</span>
+      <div class="titulo">SUPORTE OFICIAL</div>
+      <div class="desc">Para todos os clientes</div>
+    </a>
 
-      <a href="COLE_AQUI" class="card">
-        <div class="titulo">TUTORIAIS</div>
-        <div class="desc">Assista quando precisar</div>
-      </a>
+    <a href="COLE_AQUI" class="card">
+      <span class="emoji">📚</span>
+      <div class="titulo">TUTORIAIS</div>
+      <div class="desc">Assista quando precisar</div>
+    </a>
 
-      <a href="https://www.youtube.com/@kellymenezes" target="_blank" class="card">
-        <span class="tag">AO VIVO</span>
-        <div class="titulo">CANAL KELLY MENEZES</div>
-        <div class="desc">Veja agora</div>
-      </a>
+    <a href="https://youtube.com/@kellymenezes" class="card">
+      <span class="emoji">🎥</span>
+      <div class="titulo">CANAL KELLY</div>
+      <div class="desc">Veja agora</div>
+    </a>
 
-      <a href="https://palpite-seven.vercel.app/" class="card">
-        <div class="titulo">PALPITES</div>
-        <div class="desc">Palpites para você apostar</div>
-      </a>
+    <a href="https://palpite-seven.vercel.app/" class="card">
+      <span class="emoji">🔮</span>
+      <div class="titulo">PALPITES</div>
+      <div class="desc">Palpites para apostar</div>
+    </a>
 
-      <a href="COLE_AQUI" class="card">
-        <div class="titulo">CRUZ DO DIA</div>
-        <div class="desc">Proteção e sorte</div>
-      </a>
+    <a href="COLE_AQUI" class="card">
+      <span class="emoji">✝️</span>
+      <div class="titulo">CRUZ DO DIA</div>
+      <div class="desc">Proteção e sorte</div>
+    </a>
 
-      <a href="https://chat.whatsapp.com/JDguOWOKftTCTIXDIdpcUx" target="_blank" class="card">
-        <div class="titulo">LINK OFICIAL DO GRUPO</div>
-        <div class="desc">Grupo fechado de apostadores</div>
-      </a>
+    <a href="https://chat.whatsapp.com/JDguOWOKftTCTIXDIdpcUx" class="card">
+      <span class="emoji">💬</span>
+      <div class="titulo">GRUPO OFICIAL</div>
+      <div class="desc">Grupo fechado</div>
+    </a>
 
-      <div class="card desativado">
-        <div class="titulo">EM BREVE</div>
-        <div class="desc">Nova funcionalidade</div>
-      </div>
-
-      <div class="card desativado">
-        <div class="titulo">EM BREVE</div>
-        <div class="desc">Nova funcionalidade</div>
-      </div>
-
+    <div class="card desativado">
+      <span class="emoji">⏳</span>
+      <div class="titulo">EM BREVE</div>
+      <div class="desc">Nova função</div>
     </div>
+
   </div>
+</div>
 
 </body>
 </html>
